@@ -68,4 +68,98 @@ public class ArrayStackTest {
 
     }// testToStringWhenFull()
 
+    // =========================================================================================
+
+    @Test
+    public void testToStringWhenCapacityIsExpanded() {
+
+        stk.push(34);
+        stk.push(75);
+        stk.push(80);
+        stk.push(95);
+        stk.push(10);
+        stk.push(55);
+        stk.push(100);
+        stk.push(200);
+
+        String expected = "[200, 100, 55, 10, 95, 80, 75, 34, 53, 23, 69, 84, 25]";
+        String result = stk.toString();
+        assertEquals(expected, result);
+
+    }// testSizeWhenCapacityIsExpanded()
+     // =========================================================================================
+
+    @Test
+    public void testSizeAsExpected() {
+
+        int expected = 5;
+        int result = stk.size();
+        assertEquals(expected, result);
+
+    }// testSizeAsExpected()
+
+    // =========================================================================================
+
+    @Test
+    public void testSizeWhenFull() {
+
+        stk.push(34);
+        stk.push(75);
+        stk.push(80);
+        stk.push(95);
+        stk.push(10);
+
+        int expected = 10;
+        int result = stk.size();
+        assertEquals(expected, result);
+
+    }// testSizeWhenFull()
+
+    // =========================================================================================
+
+    @Test
+    public void testSizeWhenEmpty() {
+
+        ArrayStack<Integer> obj = new ArrayStack<>();
+
+        int expected = 0;
+        int result = obj.size();
+        assertEquals(expected, result);
+
+    }// testSizeWhenEmpty()
+
+    // =========================================================================================
+
+    @Test
+    public void testSizeWhenRemovingElements() {
+
+        for (int i = 0; i < 3; i++) {
+            stk.pop();
+        } // for()
+
+        int expected = 2;
+        int result = stk.size();
+        assertEquals(expected, result);
+
+    }// testSizeWhenRemovingElements()
+
+    // =========================================================================================
+
+    @Test
+    public void testSizeWhenCapacityIsExpanded() {
+
+        stk.push(34);
+        stk.push(75);
+        stk.push(80);
+        stk.push(95);
+        stk.push(10);
+        stk.push(55);
+        stk.push(100);
+        stk.push(200);
+
+        int expected = 13;
+        int result = stk.size();
+        assertEquals(expected, result);
+
+    }// testSizeWhenCapacityIsExpanded()
 }// class

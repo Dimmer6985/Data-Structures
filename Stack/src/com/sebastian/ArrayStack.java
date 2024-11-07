@@ -61,6 +61,10 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void push(E elem) {
 
+        if ((isFull())) {
+            expandCapacity();
+        } // if()
+
         this.top++;
         this.data[this.top] = elem;
 
@@ -144,7 +148,7 @@ public class ArrayStack<E> implements Stack<E> {
     @SuppressWarnings("unchecked")
     public void expandCapacity() {
 
-        int oldSize = this.size();
+        int oldSize = this.data.length;
         int newSize = oldSize * 2;
         E[] temp = (E[]) new Object[newSize];
 
@@ -176,13 +180,14 @@ public class ArrayStack<E> implements Stack<E> {
 
         StringBuilder sb = new StringBuilder("[");
 
-        for (int curr = this.top; curr >= 0; curr--) {
+        for (int i = this.top; i >= 0; i--) {
 
-            sb.append(this.data[curr]);
+            sb.append(this.data[i]);
 
-            if ((curr != 0)) {
+            if ((i != 0)) {
                 sb.append(", ");
-            }
+            } // if()
+
         } // for()
 
         return sb.append("]").toString();
