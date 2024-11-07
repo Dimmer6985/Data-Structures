@@ -53,4 +53,19 @@ public class ArrayStackTest {
 
     // =========================================================================================
 
+    @Test
+    public void testToStringWhenFull() {
+
+        stk.push(34);
+        stk.push(75);
+        stk.push(80);
+        stk.push(95);
+        stk.push(10);
+
+        String expected = "[10, 95, 80, 75, 34, 53, 23, 69, 84, 25]";
+        String result = stk.toString();
+        assertEquals(expected, result);
+
+    }// testToStringWhenFull()
+
 }// class
