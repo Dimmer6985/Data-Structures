@@ -81,8 +81,6 @@ public class ArrayStack<E> implements Stack<E> {
         this.top--;
     } // pop()
 
-    // ==================================================================================================
-
     /**
      * {@inheritDoc}
      */
@@ -93,4 +91,47 @@ public class ArrayStack<E> implements Stack<E> {
 
     } // isEmpty()
 
+    // ===================================================================================================================
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public E peek() {
+
+        if ((isEmpty())) {
+            String err = "Cannot peek at the top element because the stack is empty!";
+            throw new EmptyStackException(err);
+        } // if()
+
+        return this.data[this.top];
+
+    } // peek()
+
+    // ===================================================================================================================
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int search(E elem) {
+        int n = this.size();
+
+        for (int i = 0; i < n; i++) {
+
+            if ((this.data[i] == elem)) {
+                return i;
+            } // if()
+
+        } // for()
+
+        return -1;
+    }// search()
+
+    // ===================================================================================================================
+
+    @Override
+    public int size() {
+        return this.top + 1;
+    }// size()
 }// class
