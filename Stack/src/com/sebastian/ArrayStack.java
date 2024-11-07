@@ -1,5 +1,7 @@
 package com.sebastian;
 
+import com.sebastian.EmptyStackException;
+
 public class ArrayStack<E> implements Stack<E> {
 
     private E[] data;
@@ -63,4 +65,19 @@ public class ArrayStack<E> implements Stack<E> {
 
     } // push()
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void pop() {
+
+        if ((isEmpty())) {
+            String err = "Cannot remove an element on an empty stack!";
+            throw new EmptyStackException(err);
+        } // if()
+
+        this.top--;
+    } // pop()
 }// class
