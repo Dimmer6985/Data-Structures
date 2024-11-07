@@ -50,4 +50,11 @@ public interface Stack<E> {
      */
     public boolean isEmpty();
 
+    /**
+     * Returns the number of elements in the stack.
+     * 
+     * @return The size of the stack.
+     */
+    public int size();
+
 } // interface
