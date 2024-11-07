@@ -1,13 +1,13 @@
 package com.sebastian.test;
 
-import java.beans.Transient;
+import com.sebastian.ArrayStack;
 
 public class ArrayStackTest {
 
     private ArrayStack<Integer> obj;
 
     @test
-    void setUp() {
+    public void setUp() {
 
         obj = new ArrayStack<>();
 

@@ -44,10 +44,23 @@ public class ArrayStack<E> implements Stack<E> {
 
     }// checkCapacity()
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public ArrayStack() {
         this(DEFAULT_CAPACITY);
     }// ArrayStack()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void push(E elem) {
+
+        this.data[this.top] = elem;
+        this.top++;
+
+    } // push()
 
 }// class
