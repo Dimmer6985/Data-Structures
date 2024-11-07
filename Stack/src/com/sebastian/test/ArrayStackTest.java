@@ -37,4 +37,20 @@ public class ArrayStackTest {
 
     }// testToStringAsExpected()
 
+    // =========================================================================================
+
+    @Test
+    public void testToStringWhenEmpty() {
+
+        ArrayStack<Integer> obj = new ArrayStack<>();
+
+        String expected = "[]";
+        String result = obj.toString();
+
+        assertEquals(expected, result);
+
+    } // testToStringWhenEmpty()
+
+    // =========================================================================================
+
 }// class

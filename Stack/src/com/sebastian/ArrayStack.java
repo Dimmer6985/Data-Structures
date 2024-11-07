@@ -141,7 +141,23 @@ public class ArrayStack<E> implements Stack<E> {
 
     // ===================================================================================================================
 
+    @SuppressWarnings("unchecked")
     public void expandCapacity() {
+
+        int oldSize = this.size();
+        int newSize = oldSize * 2;
+        E[] temp = (E[]) new Object[newSize];
+
+        int i = this.top;
+
+        while ((i >= 0)) {
+
+            temp[i] = this.data[i];
+            i--;
+
+        } // while()
+
+        this.data = temp;
 
     } // expandCapacity()
       // ===================================================================================================================
