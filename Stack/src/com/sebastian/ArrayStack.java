@@ -2,8 +2,7 @@ package com.sebastian;
 
 import com.sebastian.EmptyStackException;
 
-import java.util.ArrayList;
-
+@SuppressWarnings("unused")
 public class ArrayStack<E> implements Stack<E> {
 
     private E[] data;
@@ -24,7 +23,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     public ArrayStack(int initialCapacity) {
         checkCapacity(initialCapacity);
-        this.data = (E[]) new Object();
+        this.data = (E[]) new Object[initialCapacity];
 
     }// ArrayStack()
 
@@ -62,8 +61,8 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void push(E elem) {
 
-        this.data[this.top] = elem;
         this.top++;
+        this.data[this.top] = elem;
 
     } // push()
 
@@ -142,20 +141,33 @@ public class ArrayStack<E> implements Stack<E> {
 
     // ===================================================================================================================
 
+    public void expandCapacity() {
+
+    } // expandCapacity()
+      // ===================================================================================================================
+
+    public boolean isFull() {
+
+        return ((this.size() == DEFAULT_CAPACITY));
+    } // isFull()
+      // ===================================================================================================================
+
     /**
      * {@inheritDoc}
      */
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder("[]");
+        StringBuilder sb = new StringBuilder("[");
 
-        int i = this.top - 1;
+        for (int curr = this.top; curr >= 0; curr--) {
 
-        while ((i >= 0)) {
-            sb.append(", " + this.data[i]);
-            i--;
-        } // while()
+            sb.append(this.data[curr]);
+
+            if ((curr != 0)) {
+                sb.append(", ");
+            }
+        } // for()
 
         return sb.append("]").toString();
     }// toString()
