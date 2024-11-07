@@ -19,18 +19,35 @@ public class ArrayStack<E> implements Stack<E> {
      * @throws IllegalArgumentException - If the default capacity is invalid.
      */
     public ArrayStack(int initialCapacity) {
-        this.checkCapacity(initialCapacity);
+        checkCapacity(initialCapacity);
         this.data = (E[]) new Object();
 
     }// ArrayStack()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Validates the stack's initial capacity.
+     * 
+     * @param initialCapacity The initial size of the stack.
+     * 
+     * @throws IllegalArgumentException - If the capacity is invalid.
+     */
+    private void checkCapacity(int initialCapacity) {
+
+        if ((initialCapacity <= 0)) {
+            String err = "Invalid capacity: " + initialCapacity;
+
+            throw new IllegalArgumentException(err);
+
+        } // if()
+
+    }// checkCapacity()
+
     public ArrayStack() {
         this(DEFAULT_CAPACITY);
     }// ArrayStack()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///
+
 }// class
