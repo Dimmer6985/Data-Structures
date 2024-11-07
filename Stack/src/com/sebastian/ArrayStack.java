@@ -2,6 +2,8 @@ package com.sebastian;
 
 import com.sebastian.EmptyStackException;
 
+import java.util.ArrayList;
+
 public class ArrayStack<E> implements Stack<E> {
 
     private E[] data;
@@ -130,8 +132,31 @@ public class ArrayStack<E> implements Stack<E> {
 
     // ===================================================================================================================
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int size() {
         return this.top + 1;
     }// size()
+
+    // ===================================================================================================================
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder("[]");
+
+        int i = this.top - 1;
+
+        while ((i >= 0)) {
+            sb.append(", " + this.data[i]);
+            i--;
+        } // while()
+
+        return sb.append("]").toString();
+    }// toString()
 }// class

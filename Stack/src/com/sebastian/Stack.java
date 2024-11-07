@@ -57,11 +57,4 @@ public interface Stack<E> {
      */
     public int size();
 
-    /**
-     * Displays a string representation of the stack.
-     * 
-     * @return A string representation of the stack.
-     */
-    public String toString();
-
 } // interface
