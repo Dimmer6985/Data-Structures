@@ -162,4 +162,26 @@ public class ArrayStackTest {
         assertEquals(expected, result);
 
     }// testSizeWhenCapacityIsExpanded()
+
+    // =========================================================================================
+
+    @Test
+    public void testSearchAsExpected() {
+
+        int elem1 = 53;
+        int expected1 = 4;
+        int result1 = stk.search(elem1);
+        assertEquals(expected1, result1);
+
+        int elem2 = 69;
+        int expected2 = 2;
+        int result2 = stk.search(elem2);
+        assertEquals(expected2, result2);
+
+        int elem3 = 84;
+        int expected3 = 1;
+        int result3 = stk.search(elem3);
+        assertEquals(expected3, result3);
+
+    }// testSearchAsExpected()
 }// class
