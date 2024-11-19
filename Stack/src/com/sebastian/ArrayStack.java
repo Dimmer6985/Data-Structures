@@ -120,20 +120,38 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public int search(E elem) {
-        int n = this.size();
 
-        for (int i = 0; i < n; i++) {
+        if ((isEmpty())) {
+            return -1;
 
-            if ((this.data[i] == elem)) {
-                return i;
-            } // if()
+        }
 
-        } // for()
+        else {
 
-        return -1;
+            return search(this.data, elem, 0);
+        }
     }// search()
 
     // ===================================================================================================================
+    private int search(E[] arr, E elem, int index) {
+
+        if ((index >= arr.length)) {
+            return -1;
+
+        }
+
+        else if ((this.data[index] == elem)) {
+            return index;
+
+        }
+
+        else {
+
+            return search(this.data, elem, index + 1);
+        }
+
+    }// search()
+     // ===================================================================================================================
 
     /**
      * {@inheritDoc}

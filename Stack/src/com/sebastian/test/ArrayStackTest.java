@@ -183,5 +183,24 @@ public class ArrayStackTest {
         int result3 = stk.search(elem3);
         assertEquals(expected3, result3);
 
+        int elem4 = 100;
+        int expected4 = -1;
+        int result4 = stk.search(elem4);
+        assertEquals(expected4, result4);
+
     }// testSearchAsExpected()
+
+    // =========================================================================================
+
+    @Test
+    public void testSearchWhenEmpty() {
+
+        ArrayStack<String> stack = new ArrayStack<>();
+
+        String elem = "Pizza";
+        int expected = -1;
+        int result = stack.search(elem);
+        assertEquals(expected, result);
+
+    }// testSearchWhenEmpty()
 }// class
