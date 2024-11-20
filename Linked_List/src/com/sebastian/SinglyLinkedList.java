@@ -1,5 +1,7 @@
 package com.sebastian;
 
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedList<E> implements List<E> {
 
     /** Reference to the head of the list */
@@ -57,15 +59,23 @@ public class SinglyLinkedList<E> implements List<E> {
     // ===============================================================================================================
 
     @Override
-    public E removeFirst() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFirst'");
-    }
+    public void removeFirst() {
+
+        if ((this.isEmpty())) {
+            String err = "Cannot perform 'removeFirst' operation on an empty list!";
+            throw new NoSuchElementException(err);
+
+        } // if()
+
+        this.head = this.head.next;
+
+        this.decrementSize();
+    }// removeFirst()
 
     // ===============================================================================================================
 
     @Override
-    public E removeLast() {
+    public void removeLast() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'removeLast'");
     }
@@ -121,6 +131,13 @@ public class SinglyLinkedList<E> implements List<E> {
     }// incrementSize()
 
     // ===============================================================================================================
+
+    private void decrementSize() {
+
+        this.size--;
+
+    }// decrementSize()
+     // ===============================================================================================================
 
     /** {@inheritDoc} */
     @Override

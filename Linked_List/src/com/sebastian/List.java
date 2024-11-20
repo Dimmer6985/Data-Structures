@@ -17,21 +17,21 @@ public interface List<E> {
     public void addLast(E elem);
 
     /**
-     * Removes and returns the first element from the list.
+     * Removes the first element from the list.
      * 
      * @throws NoSuchElementException - If the list does not contain any elements.
      * @return The first element of the list.
      */
-    public E removeFirst();
+    public void removeFirst();
 
     /**
-     * Removes and returns the last element from the list.
+     * Removes the last element from the list.
      * 
      * @throws NoSuchElementException - If the list does not contain any elements.
      * 
      * @return The last element of the list.
      */
-    public E removeLast();
+    public void removeLast();
 
     /**
      * Returns the number of elements in the list.
