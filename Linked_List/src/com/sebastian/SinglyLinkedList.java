@@ -15,17 +15,14 @@ public class SinglyLinkedList<E> implements List<E> {
 
     // ===============================================================================================================
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public void addFirst(E elem) {
 
         // Creating a new node containing the element to be added
         ListNode<E> newNode = new ListNode<E>(elem);
 
-        this.head.next = newNode;
-
+        newNode.next = this.head;
         this.head = newNode;
 
         this.incrementSize();
@@ -38,12 +35,12 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public void addLast(E elem) {
 
-        ListNode<E> newNode = new ListNode<E>(elem);
-
         if ((this.isEmpty())) {
 
             this.addFirst(elem);
         } // if()
+
+        ListNode<E> newNode = new ListNode<E>(elem);
 
         ListNode<E> temp = this.head;
 
@@ -51,7 +48,9 @@ public class SinglyLinkedList<E> implements List<E> {
             temp = temp.next;
         } // while()
 
-        temp = newNode;
+        temp.next = newNode;
+
+        this.incrementSize();
 
     }// addLast()
 
@@ -72,11 +71,11 @@ public class SinglyLinkedList<E> implements List<E> {
     }
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
-    }
+        return this.size;
+    }// size()
 
     // ===============================================================================================================
 
@@ -120,4 +119,30 @@ public class SinglyLinkedList<E> implements List<E> {
         this.size++;
 
     }// incrementSize()
+
+    // ===============================================================================================================
+
+    /** {@inheritDoc} */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        ListNode<E> temp = this.head;
+
+        while ((temp != null)) {
+
+            sb.append(temp.data);
+
+            if ((temp.next != null)) {
+                sb.append("-> ");
+            } // if()
+
+            temp = temp.next;
+
+        } // while()
+
+        return sb.toString();
+
+    }// toString()
 }// class
