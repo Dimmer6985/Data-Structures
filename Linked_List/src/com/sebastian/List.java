@@ -66,4 +66,11 @@ public interface List<E> {
      */
     public E getLast();
 
+    /**
+     * Determines if the list is empty.
+     * 
+     * @return True if the list is empty, false otherwise.
+     */
+    public boolean isEmpty();
+
 }// interface
