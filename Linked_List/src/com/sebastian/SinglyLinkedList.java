@@ -57,7 +57,7 @@ public class SinglyLinkedList<E> implements List<E> {
     }// addLast()
 
     // ===============================================================================================================
-
+    /** {@inheritDoc} */
     @Override
     public void removeFirst() {
 
@@ -68,18 +68,68 @@ public class SinglyLinkedList<E> implements List<E> {
         } // if()
 
         this.head = this.head.next;
-
         this.decrementSize();
     }// removeFirst()
 
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public void removeLast() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeLast'");
-    }
+
+        if ((this.isEmpty())) {
+            String err = "Cannot perform 'removeLast' operation on an empty list!";
+            throw new NoSuchElementException(err);
+
+        }
+
+        else if ((this.size == 1)) {
+
+            this.removeFirst();
+
+        }
+
+        else {
+
+            ListNode<E> temp = this.head;
+
+            this.removeLast(temp);
+
+        }
+
+        // while ((temp.next.next != null)) {
+        // temp = temp.next;
+        // } // while()
+
+        // temp.next = null;
+        // this.decrementSize();
+
+    }// removeLast()
+
     // ===============================================================================================================
+
+    /**
+     * Recursively removes the last element in the list.
+     * 
+     * @param temp - Temporary node used to traverse the list.
+     */
+    private void removeLast(ListNode<E> temp) {
+
+        if ((temp.next.next == null)) {
+
+            temp.next = null;
+            this.decrementSize();
+
+        }
+
+        else {
+
+            temp = temp.next;
+            this.removeLast(temp);
+        }
+
+    }// removeLast()
+     // ===============================================================================================================
 
     /** {@inheritDoc} */
     @Override
@@ -97,6 +147,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public E getFirst() {
         // TODO Auto-generated method stub
@@ -104,6 +155,7 @@ public class SinglyLinkedList<E> implements List<E> {
     }
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public E getLast() {
         // TODO Auto-generated method stub
@@ -112,9 +164,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
     // ===============================================================================================================
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean isEmpty() {
 

@@ -19,17 +19,16 @@ public interface List<E> {
     /**
      * Removes the first element from the list.
      * 
-     * @throws NoSuchElementException - If the list does not contain any elements.
-     * @return The first element of the list.
+     * @throws NoSuchElementException If the list does not contain any elements.
+     *
      */
     public void removeFirst();
 
     /**
      * Removes the last element from the list.
      * 
-     * @throws NoSuchElementException - If the list does not contain any elements.
+     * @throws NoSuchElementException If the list does not contain any elements.
      * 
-     * @return The last element of the list.
      */
     public void removeLast();
 
