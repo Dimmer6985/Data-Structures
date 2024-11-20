@@ -28,15 +28,32 @@ public class SinglyLinkedList<E> implements List<E> {
 
         this.head = newNode;
 
+        this.incrementSize();
+
     }// addFirst()
 
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public void addLast(E elem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addLast'");
-    }
+
+        ListNode<E> newNode = new ListNode<E>(elem);
+
+        if ((this.isEmpty())) {
+
+            this.addFirst(elem);
+        } // if()
+
+        ListNode<E> temp = this.head;
+
+        while ((temp.next != null)) {
+            temp = temp.next;
+        } // while()
+
+        temp = newNode;
+
+    }// addLast()
 
     // ===============================================================================================================
 
