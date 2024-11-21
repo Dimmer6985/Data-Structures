@@ -205,5 +205,50 @@ public class SinglyLinkedListTest {
         int result = this.list.getFirst();
         assertEquals(expected, result);
 
-    }// testGetFirstWhenRemovingElements
+    }// testGetFirstWhenRemovingElements()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testGetLastAsExpected() {
+        int expected = 0;
+        int result = this.list.getLast();
+        assertEquals(expected, result);
+    }// testGetLastAsExpected()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testGetLastForEmptyList() {
+        try {
+            int n = this.list.size();
+
+            for (int i = 0; i < n; i++) {
+                this.list.removeFirst();
+            } // for()
+
+            this.list.getLast();
+
+            String err = "NoSuchElementException expected to be thrown.";
+            fail(err);
+
+        } catch (NoSuchElementException e) {
+            String expected = "Cannot perform 'getLast' operation on an empty list!";
+            String result = e.getMessage();
+            assertEquals(expected, result);
+        } // catch()
+    }// testGetLastForEmptyList()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testGetLastWhenRemovingElements() {
+        this.list.removeLast();
+        this.list.removeLast();
+        this.list.removeLast();
+
+        int expected = 10;
+        int result = this.list.getLast();
+        assertEquals(expected, result);
+    }// testGetLastWhenRemovingElements()
 }// class

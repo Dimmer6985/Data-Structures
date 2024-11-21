@@ -188,9 +188,22 @@ public class SinglyLinkedList<E> implements List<E> {
     /** {@inheritDoc} */
     @Override
     public E getLast() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLast'");
-    }
+
+        if ((this.isEmpty())) {
+            String err = "Cannot perform 'getLast' operation on an empty list!";
+            throw new NoSuchElementException(err);
+        } // if()
+
+        ListNode<E> temp = this.head;
+
+        while ((temp.next.next != null)) {
+            temp = temp.next;
+        } // while()
+
+        E result = temp.next.data;
+
+        return result;
+    }// getLast()
 
     // ===============================================================================================================
 
