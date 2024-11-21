@@ -155,4 +155,18 @@ public class SinglyLinkedListTest {
         assertFalse(result);
 
     }// testContainsForEmptyList()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testGetFirstAsExpected() {
+
+        int expected = 12;
+        int result = this.list.getFirst();
+        assertEquals(expected, result);
+
+    }// testGetFirstAsExpected()
+
+    // ===============================================================================================================
+
 }// class

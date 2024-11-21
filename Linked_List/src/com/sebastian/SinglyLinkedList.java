@@ -147,14 +147,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public boolean contains(E elem) {
         int index = this.search(elem);
 
-        if ((index != -1)) {
-            return true;
-
-        }
-
-        else {
-            return false;
-        }
+        return ((index != -1));
     }// contains()
 
     // ===============================================================================================================
@@ -183,10 +176,14 @@ public class SinglyLinkedList<E> implements List<E> {
     /** {@inheritDoc} */
     @Override
     public E getFirst() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFirst'");
-    }
-    // ===============================================================================================================
+        if ((this.isEmpty())) {
+            String err = "Cannot perform 'getFirst' operation on an empty list!";
+            throw new NoSuchElementException(err);
+        } // if()
+
+        return this.head.data;
+    }// getFirst()
+     // ===============================================================================================================
 
     /** {@inheritDoc} */
     @Override
