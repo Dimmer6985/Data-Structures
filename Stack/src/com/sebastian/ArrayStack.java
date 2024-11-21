@@ -22,7 +22,7 @@ public class ArrayStack<E> implements Stack<E> {
      * @throws IllegalArgumentException - If the default capacity is invalid.
      */
     public ArrayStack(int initialCapacity) {
-        checkCapacity(initialCapacity);
+        this.checkCapacity(initialCapacity);
         this.data = (E[]) new Object[initialCapacity];
 
     }// ArrayStack()
@@ -61,8 +61,8 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void push(E elem) {
 
-        if ((isFull())) {
-            expandCapacity();
+        if ((this.isFull())) {
+            this.expandCapacity();
         } // if()
 
         this.top++;
@@ -78,7 +78,7 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void pop() {
 
-        if ((isEmpty())) {
+        if ((this.isEmpty())) {
             String err = "Cannot remove an element on an empty stack!";
             throw new EmptyStackException(err);
         } // if()
@@ -104,7 +104,7 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public E peek() {
 
-        if ((isEmpty())) {
+        if ((this.isEmpty())) {
             String err = "Cannot peek at the top element because the stack is empty!";
             throw new EmptyStackException(err);
         } // if()
@@ -121,7 +121,7 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public int search(E elem) {
 
-        if ((isEmpty())) {
+        if ((this.isEmpty())) {
             return -1;
 
         }
@@ -147,7 +147,7 @@ public class ArrayStack<E> implements Stack<E> {
 
         else {
 
-            return search(this.data, elem, index + 1);
+            return this.search(this.data, elem, index + 1);
         }
 
     }// search()
