@@ -10,6 +10,9 @@ public class SinglyLinkedList<E> implements List<E> {
     /** Keeps track of the number of elements in the list. */
     private int size;
 
+    // ===============================================================================================================
+
+    /** Constructs and empty list */
     public SinglyLinkedList() {
         this.head = null;
         this.size = 0;
@@ -139,13 +142,43 @@ public class SinglyLinkedList<E> implements List<E> {
 
     // ===============================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public boolean contains(E elem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
-    }
+        int index = this.search(elem);
+
+        if ((index != -1)) {
+            return true;
+
+        }
+
+        else {
+            return false;
+        }
+    }// contains()
 
     // ===============================================================================================================
+
+    private int search(E elem) {
+
+        ListNode<E> temp = this.head;
+        int index = 0;
+
+        while ((temp != null)) {
+
+            if ((temp.data == elem)) {
+                return index;
+            } // if()
+
+            temp = temp.next;
+            index++;
+
+        } // while()
+
+        return -1;
+
+    }// search()
+     // ===============================================================================================================
 
     /** {@inheritDoc} */
     @Override

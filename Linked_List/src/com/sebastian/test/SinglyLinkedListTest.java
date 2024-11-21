@@ -1,6 +1,8 @@
 package com.sebastian.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.NoSuchElementException;
@@ -121,4 +123,36 @@ public class SinglyLinkedListTest {
         } // catch()
 
     }// testRemoveLastForEmptyList()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testContainsAsExpected() {
+
+        boolean result1 = this.list.contains(50);
+        assertTrue(result1);
+
+        boolean result2 = this.list.contains(10);
+        assertTrue(result2);
+
+        boolean result3 = this.list.contains(-1);
+        assertFalse(result3);
+
+    }// testContainsAsExpected()
+
+    // ===============================================================================================================
+
+    @Test
+    public void testContainsForEmptyList() {
+
+        int n = this.list.size();
+
+        for (int i = 0; i < n; i++) {
+            this.list.removeFirst();
+        } // for()
+
+        boolean result = this.list.contains(5);
+        assertFalse(result);
+
+    }// testContainsForEmptyList()
 }// class
