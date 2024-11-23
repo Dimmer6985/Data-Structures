@@ -2,8 +2,10 @@ package com.sebastian;
 
 public class ArrayQueue<E> implements Queue<E> {
 
+    private E[] data;
     private int front;
     private int rear;
+    private int size;
     private static final int DEFAULT_CAPACITY = 10;
 
     // =======================================================================================================
@@ -16,12 +18,19 @@ public class ArrayQueue<E> implements Queue<E> {
      * 
      * @throws IllegalArgumentException If the initial capacity is invalid.
      */
+    @SuppressWarnings("unchecked")
     public ArrayQueue(int initialCapacity) {
 
         this.checkCapacity(initialCapacity);
+        this.data = (E[]) new Object[initialCapacity];
         this.front = -1;
         this.rear = -1;
+        this.size = 0;
 
+    }// ArrayQueue()
+
+    public ArrayQueue() {
+        this(DEFAULT_CAPACITY);
     }// ArrayQueue()
 
     // =======================================================================================================
@@ -36,13 +45,51 @@ public class ArrayQueue<E> implements Queue<E> {
     }// checkCapacity()
      // =======================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public void enqueue(E elem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'enqueue'");
-    }
+
+        if ((this.isFull())) {
+            this.expandCapacity();
+
+        } // if
+
+        else if ((this.isEmpty())) {
+            this.front++;
+            this.rear++;
+            this.data[this.front] = elem;
+            this.data[this.rear] = elem;
+
+        } // else if
+
+        else {
+
+            this.rear++;
+            this.data[this.rear] = elem;
+
+        } // else
+
+        this.size++;
+    }// enqueue()
 
     // =======================================================================================================
+
+    @SuppressWarnings("unchecked")
+    private void expandCapacity() {
+
+        int oldSize = this.size();
+        int newSize = oldSize * 2;
+
+        E[] temp = (E[]) new Object[newSize];
+
+        for (int i = 0; i < newSize; i++) {
+            temp[i] = this.data[i];
+        } // for()
+
+        this.data = temp;
+
+    } // expandCapacity()
+      // =======================================================================================================
 
     @Override
     public void dequeue() {
@@ -52,19 +99,19 @@ public class ArrayQueue<E> implements Queue<E> {
 
     // =======================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public boolean isFull() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isFull'");
-    }
-    // =======================================================================================================
+        return ((this.size() == DEFAULT_CAPACITY));
+    }// isFull()
+     // =======================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
-    }
-    // =======================================================================================================
+        return ((this.size == 0));
+    }// isEmpty()
+     // =======================================================================================================
 
     @Override
     public int size() {
