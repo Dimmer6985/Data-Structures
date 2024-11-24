@@ -59,6 +59,7 @@ public class ArrayQueue<E> implements Queue<E> {
             this.rear++;
             this.data[this.front] = elem;
             this.data[this.rear] = elem;
+            this.size++;
 
         } // else if
 
@@ -66,10 +67,10 @@ public class ArrayQueue<E> implements Queue<E> {
 
             this.rear++;
             this.data[this.rear] = elem;
+            this.size++;
 
         } // else
 
-        this.size++;
     }// enqueue()
 
     // =======================================================================================================
@@ -109,16 +110,37 @@ public class ArrayQueue<E> implements Queue<E> {
     /** {@inheritDoc} */
     @Override
     public boolean isEmpty() {
-        return ((this.size == 0));
+        return ((this.size() == 0));
     }// isEmpty()
      // =======================================================================================================
 
+    /** {@inheritDoc} */
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
-    }
+        return this.size;
+    }// size()
 
     // =======================================================================================================
+
+    /** {@inheritDoc} */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder("[");
+
+        int n = this.size();
+
+        for (int i = 0; i < n; i++) {
+
+            sb.append(this.data[i]);
+
+            if ((i < (n - 1))) {
+                sb.append(", ");
+            } // if()
+        } // for()
+
+        return sb.append("]").toString();
+
+    }// toString()
 
 }// class
